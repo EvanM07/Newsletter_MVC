@@ -6,12 +6,17 @@ using System.Web;
 using System.Web.Mvc;
 using System.IO.MemoryMappedFiles;
 using System.Data.SqlTypes;
-
+using NewsLetter_MVC.Models;
+using NewsLetter_MVC.ViewModels;
 
 namespace NewsLetter_MVC.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly string connectionString = @"Data Source=(localdb)\ProjectsV13;Initial Catalog=Newsletter;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+        public int SignupVM { get; private set; }
+
         public ActionResult Index()
         {
             return View();
@@ -38,7 +43,6 @@ namespace NewsLetter_MVC.Controllers
             {
 
                 /// THIS IS USING ADO.NET 
-                string connectionString = @"Data Source=(localdb)\ProjectsV13;Initial Catalog=Newsletter;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
                 string queryString = @"INSERT INTO SignUps (FirstName, LastName, EmailAddress) VALUES
                                         (@FirstName, @LastName, @EmailAddress)";
@@ -63,19 +67,43 @@ namespace NewsLetter_MVC.Controllers
             }
         }
 
-
-        public ActionResult About()
+            /// WE ARE MAKING A METHOD CALLED ADMIN THIS WILL RETURN THE 
+            /// VIEW(); WHICH WILL BE THE PAGE THAT THE ADMIN WILL HAVE ACCESS TO. 
+        public ActionResult Admin()
         {
-            ViewBag.Message = "Your application description page.";
+            string queryString = @"SELECT Id, FirstName, LastName, EmailAddress SocialSecurityNumber from Signups";
 
-            return View();
-        }
+            List<NewsletterSignUp> signups = new List<NewsletterSignUp>();
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                connection.Open();
 
-            return View();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    var signup = new NewsletterSignUp();
+                    signup.Id = Convert.ToInt32(reader["Id"]);
+                    signup.FirstName = reader["FirstName"].ToString();
+                    signup.LastName = reader["LastName"].ToString();
+                    signup.EmailAddress = reader["EmailAddress"].ToString();
+                    signup.SocialSecurityNumber = reader["SocialSecurityNumber"].ToString();
+
+                    signups.Add(signup);
+                }
+            }
+            var  signupVMs= new List<SignUpVM>();
+            foreach (var signup in signups)
+            {
+                var signupVM = new SignUpVM();
+                signup.FirstName = signup.FirstName;
+                signup.LastName = signup.LastName;
+                signup.EmailAddress = signup.EmailAddress;
+                signupVMs.Add(signupVM);
+            }
+            return View (signupVMs);
         }
     }
 }
