@@ -1,0 +1,38 @@
+﻿@using NewsLetter_MVC.ViewModels
+@model  List<SignUpVM>
+@using NewsLetter_MVC.Models
+@using NewsLetter_MVC.Controllers
+<div class="row no-gutters m-3">
+    <!-- THE LINE OF CODE BELOW STATES HOW THE COLUMS SHOULD
+         LOOK BASES ON SCREEN SIZE -->
+    <div class="card col-sm-12 card col-md-10 card col-lg-6 mx-auto shadow">
+        <div class="card-header text-center">
+            <h5 class="m-0">Sign-ups</h5>
+        </div>
+        <div class="card-body">
+
+            <!--IN THIS SIGN UP WE ARE LOOPING THROUGH THE MODEL "AKA CLASS" AND ADDING THAT INFO TO EACH COLUMN-->
+            @foreach (var signup in Model)
+            {
+                using (Html.BeginForm("Unsubscribe", "Admin", FormMethod.Post))
+                {
+                    <input type="hidden" name="Id" value="@signup.Id" />
+                    <div class="row mb-3">
+                        <div class="col-2">
+                            @signup.FirstName
+                        </div>
+                        <div class="col">
+                            @signup.LastName
+                        </div>
+                        <div class="col-4">
+                            @signup.EmailAddress
+                        </div>
+                            <div class="col">
+                                <button type="submit" class="btn btn-danger btn-block"> Unsubscribe</button>
+                            </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

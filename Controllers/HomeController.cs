@@ -13,8 +13,6 @@ namespace NewsLetter_MVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly string connectionString = @"Data Source=(localdb)\ProjectsV13;Initial Catalog=Newsletter;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
         public int SignupVM { get; private set; }
 
         public ActionResult Index()
@@ -42,68 +40,22 @@ namespace NewsLetter_MVC.Controllers
             else
             {
 
-                /// THIS IS USING ADO.NET 
-
-                string queryString = @"INSERT INTO SignUps (FirstName, LastName, EmailAddress) VALUES
-                                        (@FirstName, @LastName, @EmailAddress)";
-
-                
-                using(SqlConnection connection = new SqlConnection(connectionString))
+                using (NewsletterEntities db = new NewsletterEntities())
                 {
-                    SqlCommand command = new SqlCommand(queryString, connection);
-                    command.Parameters.Add("@FirstName", System.Data.SqlDbType.VarChar);
-                    command.Parameters.Add("@LastName", System.Data.SqlDbType.VarChar);
-                    command.Parameters.Add("@EmailAddress", System.Data.SqlDbType.VarChar);
+                    var signup = new SignUp();
+                    signup.FirstName = firstName;
+                    signup.LastName = lastName;
+                    signup.EmailAddress = emailAddress;
 
-                    command.Parameters["@FirstName"].Value = firstName;
-                    command.Parameters["@LastName"].Value = lastName;
-                    command.Parameters["@EmailAddress"].Value = emailAddress;
 
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                    connection.Close();
+                    db.SignUps.Add(signup);
+                    db.SaveChanges();
+
                 }
+
                 return View("Success");
             }
         }
-
-            /// WE ARE MAKING A METHOD CALLED ADMIN THIS WILL RETURN THE 
-            /// VIEW(); WHICH WILL BE THE PAGE THAT THE ADMIN WILL HAVE ACCESS TO. 
-        public ActionResult Admin()
-        {
-            string queryString = @"SELECT Id, FirstName, LastName, EmailAddress SocialSecurityNumber from Signups";
-
-            List<NewsletterSignUp> signups = new List<NewsletterSignUp>();
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlCommand command = new SqlCommand(queryString, connection);
-                connection.Open();
-
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-
-                    var signup = new NewsletterSignUp();
-                    signup.Id = Convert.ToInt32(reader["Id"]);
-                    signup.FirstName = reader["FirstName"].ToString();
-                    signup.LastName = reader["LastName"].ToString();
-                    signup.EmailAddress = reader["EmailAddress"].ToString();
-                    signup.SocialSecurityNumber = reader["SocialSecurityNumber"].ToString();
-
-                    signups.Add(signup);
-                }
-            }
-            var  signupVMs= new List<SignUpVM>();
-            foreach (var signup in signups)
-            {
-                var signupVM = new SignUpVM();
-                signup.FirstName = signup.FirstName;
-                signup.LastName = signup.LastName;
-                signup.EmailAddress = signup.EmailAddress;
-                signupVMs.Add(signupVM);
-            }
-            return View (signupVMs);
-        }
     }
 }
+    

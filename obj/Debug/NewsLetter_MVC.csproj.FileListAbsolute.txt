@@ -235,3 +235,7 @@ C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\obj\Debug\NewsLetter_MVC.csproj.
 C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\obj\Debug\NewsLetter_MVC.csproj.CopyComplete
 C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\obj\Debug\NewsLetter_MVC.dll
 C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\obj\Debug\NewsLetter_MVC.pdb
+C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\EntityFramework.dll
+C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\EntityFramework.SqlServer.dll
+C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\EntityFramework.xml
+C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\EntityFramework.SqlServer.xml
