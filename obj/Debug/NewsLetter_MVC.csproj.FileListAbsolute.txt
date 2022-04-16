@@ -209,6 +209,8 @@ C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\roslyn\vbc.rsp
 C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\roslyn\VBCSCompiler.exe
 C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\Antlr3.Runtime.dll
+C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\EntityFramework.dll
+C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\EntityFramework.SqlServer.dll
 C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\Newtonsoft.Json.dll
@@ -220,6 +222,8 @@ C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\System.Web.WebPages.Deployme
 C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\System.Web.WebPages.dll
 C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\System.Web.WebPages.Razor.dll
 C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\WebGrease.dll
+C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\EntityFramework.xml
+C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\EntityFramework.SqlServer.xml
 C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\System.Web.Helpers.xml
 C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\System.Web.Mvc.xml
 C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\System.Web.Optimization.xml
@@ -235,7 +239,3 @@ C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\obj\Debug\NewsLetter_MVC.csproj.
 C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\obj\Debug\NewsLetter_MVC.csproj.CopyComplete
 C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\obj\Debug\NewsLetter_MVC.dll
 C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\obj\Debug\NewsLetter_MVC.pdb
-C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\EntityFramework.dll
-C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\EntityFramework.SqlServer.dll
-C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\EntityFramework.xml
-C:\Users\Laptop\Documents\GitHub\Newsletter_MVC\bin\EntityFramework.SqlServer.xml
